@@ -1,2 +1,2 @@
 # DatalogTranslation
-implemented translation of RPQs to Datalog rules using VLog and tested with Neo4j and PostgreSQL
+This project is written to implement translation of RPQs to Datalog rules using VLog open source Datalog engine using Java language.
