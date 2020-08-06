@@ -1,0 +1,15 @@
+?x ((isMarriedTo+livesIn)+(IsLocatedIn+dealsWith)) Asia 
+?x ((hasChild+livesIn)+(IsLocatedIn+dealsWith) Venice 
+?x ((influences+livesIn)+(IsLocatedIn+dealsWith)) Japan 
+?x (livesIn+(IsLocatedIn+dealsWith+)) Florida 
+?x ((hasSuccessor+livesIn)/(IsLocatedIn+dealsWith)) Japan 
+?x ((hasPredecessor+livesIn)/(IsLocatedIn+dealsWith+)) California 
+?x ((hasAcademicAdvisor+livesIn)/(IsLocatedIn+dealsWith)) Asia 
+?x (IsLocatedIn+/dealsWith+) USA 
+?x (actedIn)* KevinBacon 
+?x (IsLocatedIn+dealsWith) Japan 
+?x (isMarriedTo+(owns/IsLocatedIn)) USA 
+?x (wasBornIn/IsLocatedIn) Venice 
+?x (hasPredecessor+livesIn) Netherlands 
+?x (isMarriedTo/IsLocatedIn) USA 
+?x (IsLocated+(isConnectedTo+dealsWith)) Japan
