@@ -21,6 +21,7 @@ This project is written to implement translation of RPQs to Datalog rules using 
 1) Download Neo4j from https://neo4j.com/download/
 2) Set up using the installer.
 3) Create a local database using a password and Start the graph database connection.
+4) Copy the fact csv files which was generated from SampleFileReader.java to the "import" folder of graph database.
 4) Open Neo4j browser.
 5) In the command line, run the query from "Neo4j queries" one by one.
 
