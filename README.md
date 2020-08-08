@@ -7,9 +7,9 @@ This project is written to implement translation of RPQs to Datalog rules using 
 3)Download Java from https://java.com/en/download/
 4)Import the Vlog project into Eclipse IDE and copy the files in Src folder.
 5)Download the below files of YAGO dataset from https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/downloads
-  a)yagoLiteralFacts.tsv
-  b)yagoFacts.tsv
-  c)yagoDateFacts.tsv
+a)yagoLiteralFacts.tsv
+b)yagoFacts.tsv
+c)yagoDateFacts.tsv
 6) From the Src folder, run SampleFileReader.java to get csv files.
 7) Then run the ParsingClass.java with the RPQ_script.txt to get the datalog translation results.
 
