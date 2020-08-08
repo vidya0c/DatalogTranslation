@@ -1,0 +1,152 @@
+Neo4j queries
+
+
+Q1) LOAD CSV FROM 'file:///isMarriedTo.csv' AS row1
+LOAD CSV FROM 'file:///livesIn.csv' AS row2 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row3
+LOAD CSV FROM 'file:///dealsWith.csv' AS row4 
+CREATE (p:Person {personName:  row1[0]})-[rela:isMarriedTo]->(p1:Person {personName: row1[1]})
+CREATE (p2:Person {personName: row2[0]})-[relb:livesIn]->(c1:Country {countryName: row2[1]})
+CREATE (pl1:Place {placeName:  row3[0]})-[relc:IsLocatedIn]->(pl2:Place {placeName: row3[1]})
+CREATE (pl3:Place {placeName:  row4[0]})-[reld:dealsWith]->(pl4:Place {placeName: row4[1]})
+With p,p1,p2,c1,pl1,pl2,pl3,pl4
+Match (x)-[:isMarriedTo|livesIn]->(c2:Country {countryName: 'Asia'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+
+Q2) LOAD CSV FROM 'file:///hasChild.csv' AS row1
+LOAD CSV FROM 'file:///livesIn.csv' AS row2 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row3
+LOAD CSV FROM 'file:///dealsWith.csv' AS row4 
+CREATE (p:Person {personName:  row1[0]})-[rela:hasChild]->(p1:Child {childName: row1[1]})
+CREATE (p2:Person {personName: row2[0]})-[relb:livesIn]->(c1:Country {countryName: row2[1]})
+CREATE (pl1:Place {placeName:  row3[0]})-[relc:IsLocatedIn]->(pl2:Place {placeName: row3[1]})
+CREATE (pl3:Place {placeName:  row4[0]})-[reld:dealsWith]->(pl4:Place {placeName: row4[1]})
+With p,p1,p2,c1,pl1,pl2,pl3,pl4
+Match (x)-[:hasChild|livesIn]->(c2:Country {countryName: 'Venice'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+
+Q3) LOAD CSV FROM 'file:///influences.csv' AS row1
+LOAD CSV FROM 'file:///livesIn.csv' AS row2 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row3
+LOAD CSV FROM 'file:///dealsWith.csv' AS row4 
+CREATE (p:Person {personName:  row1[0]})-[rela:influences]->(p1:Person {personName: row1[1]})
+CREATE (p2:Person {personName: row2[0]})-[relb:livesIn]->(c1:Country {countryName: row2[1]})
+CREATE (pl1:Place {placeName:  row3[0]})-[relc:IsLocatedIn]->(pl2:Place {placeName: row3[1]})
+CREATE (pl3:Place {placeName:  row4[0]})-[reld:dealsWith]->(pl4:Place {placeName: row4[1]})
+With p,p1,p2,c1,pl1,pl2,pl3,pl4
+Match (x)-[:influences|livesIn]->(c2:Country {countryName: 'Japan'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+Q4) LOAD CSV FROM 'file:///livesIn.csv' AS row1 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row2
+LOAD CSV FROM 'file:///dealsWith.csv' AS row3
+CREATE (p2:Person {personName: row1[0]})-[relb:livesIn]->(c1:Country {countryName: row1[1]})
+CREATE (pl1:Place {placeName:  row2[0]})-[rela:IsLocatedIn]->(pl2:Place {placeName: row2[1]})
+CREATE (pl3:Place {placeName:  row3[0]})-[relc:dealsWith]->(pl4:Place {placeName: row3[1]})
+With p2,c1,pl1,pl2,pl3,pl4
+Match (x)-[:livesIn]->(c2:Country {countryName: 'Florida'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+Q5) LOAD CSV FROM 'file:///hasNeighbor.csv' AS row1 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row2
+LOAD CSV FROM 'file:///dealsWith.csv' AS row3
+CREATE (c:Country {countryName: row1[0]})-[rela:hasNeighbor]->(c1:Country {countryName: row1[1]})
+CREATE (pl1:Place {placeName:  row2[0]})-[relb:IsLocatedIn]->(pl2:Place {placeName: row2[1]})
+CREATE (pl3:Place {placeName:  row3[0]})-[relc:livesIn]->(pl4:Place {placeName: row3[1]})
+With c,c1,pl1,pl2,pl3,pl4
+Match (x)-[:hasNeighbor]->(c2:Country {countryName: 'Japan'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+
+Q6) LOAD CSV FROM 'file:///hasChild.csv' AS row1
+LOAD CSV FROM 'file:///livesIn.csv' AS row2 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row3
+LOAD CSV FROM 'file:///dealsWith.csv' AS row4 
+CREATE (p:Person {personName:  row1[0]})-[rela:hasChild]->(p1:Child {childName: row1[1]})
+CREATE (p2:Person {personName: row2[0]})-[relb:livesIn]->(c1:Country {countryName: row2[1]})
+CREATE (pl1:Place {placeName:  row3[0]})-[relc:IsLocatedIn]->(pl2:Place {placeName: row3[1]})
+CREATE (pl3:Place {placeName:  row4[0]})-[reld:dealsWith]->(pl4:Place {placeName: row4[1]})
+With p,p1,p2,c1,pl1,pl2,pl3,pl4
+Match (x)-[:hasChild|livesIn]->(c2:Country {countryName: 'California'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+Q7) LOAD CSV FROM 'file:///hasAcademicAdvisor.csv' AS row1
+LOAD CSV FROM 'file:///livesIn.csv' AS row2 
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row3
+LOAD CSV FROM 'file:///dealsWith.csv' AS row4 
+CREATE (p:Person {personName:  row1[0]})-[rela:hasAcademicAdvisor]->(p1:Person {personName: row1[1]})
+CREATE (p2:Person {personName: row2[0]})-[relb:livesIn]->(c1:Country {countryName: row2[1]})
+CREATE (pl1:Place {placeName:  row3[0]})-[relc:IsLocatedIn]->(pl2:Place {placeName: row3[1]})
+CREATE (pl3:Place {placeName:  row4[0]})-[reld:livesIn]->(pl4:Place {placeName: row4[1]})
+With p,p1,p2,c1,pl1,pl2,pl3,pl4
+Match (x)-[:hasAcademicAdvisor|livesIn]->(c2:Country {countryName: 'Asia'})<-[:IsLocatedIn|dealsWith]-(x)
+RETURN x;
+
+Q8) LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row1
+LOAD CSV FROM 'file:///dealsWith.csv' AS row2 
+CREATE (pl1:Place {placeName:  row1[0]})-[rela:IsLocatedIn]->(pl2:Place {placeName: row1[1]})
+CREATE (pl3:Place {placeName:  row2[0]})-[relb:dealsWith]->(pl4:Place {placeName: row2[1]})
+With pl1,pl2,pl3,pl4
+Match (x)-[:IsLocatedIn|dealsWith]->(c2:Country {countryName: 'USA'})
+RETURN x;
+
+Q9) LOAD CSV FROM 'file:///actedIn.csv' AS row1
+CREATE (pl1:Person {personName:  row1[0]})-[rela:actedIn]->(pl2:Movie {movieName: row1[1]})
+With pl1,pl2
+Match (x)-[:actedIn*]->(c2:Movie {movieName: 'KevinBacon'})
+RETURN x;
+
+Q10) LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row1
+LOAD CSV FROM 'file:///dealsWith.csv' AS row2 
+CREATE (pl1:Place {placeName:  row1[0]})-[rela:IsLocatedIn]->(pl2:Place {placeName: row1[1]})
+CREATE (pl3:Place {placeName:  row2[0]})-[relb:dealsWith]->(pl4:Place {placeName: row2[1]})
+With pl1,pl2,pl3,pl4
+Match (x)-[:IsLocatedIn|dealsWith]->(c2:Country {countryName: 'Japan'})
+RETURN x;
+
+Q11) LOAD CSV FROM 'file:///isMarriedTo.csv' AS row1 
+LOAD CSV FROM 'file:///owns.csv' AS row2
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row3
+CREATE (p:Person {personName:  row1[0]})-[rela:isMarriedTo]->(p1:Person {personName: row1[1]})
+CREATE (pl1:Group {groupName:  row2[0]})-[relb:owns]->(pl2:Company {companyName: row2[1]})
+CREATE (pl3:Place {placeName:  row3[0]})-[relc:IsLocatedIn]->(pl4:Place {placeName: row3[1]})
+With p,p1,pl1,pl2,pl3,pl4
+Match (x)-[:isMarriedTo|owns]->(c2:Place {placeName: 'USA'})<-[:IsLocatedIn]-(x)
+RETURN x;
+
+Q12) LOAD CSV FROM 'file:///wasBornIn.csv' AS row1
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row2 
+CREATE (pl1:Person {personName:  row1[0]})-[rela:wasBornIn]->(pl2:Place {placeName: row1[1]})
+CREATE (pl3:Place {placeName:  row2[0]})-[relb:IsLocatedIn]->(pl4:Place {placeName: row2[1]})
+With pl1,pl2,pl3,pl4
+Match (x)-[:wasBornIn|IsLocatedIn]->(c2:Place {placeName: 'Venice'})
+RETURN x; 
+
+Q13) LOAD CSV FROM 'file:///hasAcademicAdvisor.csv' AS row1
+LOAD CSV FROM 'file:///livesIn.csv' AS row2 
+CREATE (pl1:Person {personName:  row1[0]})-[rela:hasAcademicAdvisor]->(pl2:Person {personName:  row1[1]})
+CREATE (pl3:Person {personName:  row2[0]})-[relb:livesIn]->(pl4:Place {placeName: row2[1]})
+With pl1,pl2,pl3,pl4
+Match (x)-[:hasAcademicAdvisor|livesIn]->(c2:Place {placeName: 'Netherlands'})
+RETURN x; 
+
+Q14) LOAD CSV FROM 'file:///isMarriedTo.csv' AS row1
+LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row2 
+CREATE (pl1:Person {personName:  row1[0]})-[rela:isMarriedTo]->(pl2:Person {personName:  row1[1]})
+CREATE (pl3:Person {personName:  row2[0]})-[relb:IsLocatedIn]->(pl4:Place {placeName: row2[1]})
+With pl1,pl2,pl3,pl4
+Match (x)-[:isMarriedTo|IsLocatedIn]->(c2:Place {placeName: 'USA'})
+RETURN x; 
+
+Q15) LOAD CSV FROM 'file:///IsLocatedIn.csv' AS row1
+LOAD CSV FROM 'file:///isConnectedTo.csv' AS row2 
+LOAD CSV FROM 'file:///dealsWith.csv' AS row3
+CREATE (pl1:Place {placeName:  row1[0]})-[rela:IsLocatedIn]->(pl2:Place {placeName: row1[1]})
+CREATE (pl3:Airport {airportName:  row2[0]})-[relb:isConnectedTo]->(pl4:Airport {airportName: row2[1]})
+CREATE (pl5:Place {placeName:  row3[0]})-[relc:dealsWith]->(pl6:Place {placeName: row3[1]})
+With pl1,pl2,pl3,pl4,pl5,pl6
+Match (x)-[:IsLocatedIn]->(c2:Place {placeName: 'Japan'})<-[:isConnectedTo|dealsWith]-(x)
+RETURN x;
+
