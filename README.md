@@ -22,6 +22,8 @@ This project is written to implement translation of RPQs to Datalog rules using 
 2) Set up using the installer.
 3) Create a local database using a password and Start the graph database connection.
 4) Copy the fact csv files which was generated from SampleFileReader.java to the "import" folder of graph database.
-4) Open Neo4j browser.
-5) In the command line, run the query from "Neo4j queries" one by one.
+5) Open Neo4j browser.
+6) In the browser setting, set connection timeout to 30 minutes.
+7) Edit the neo4j.config file and set the dbms.memory.heap.max_size = 5GB and dbms.memory.heap.initial_size=4GB and dbms.memory.pagecache.size=2GB.
+8) In the command line, run the query from "Neo4j queries" one by one.
 
