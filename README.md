@@ -2,14 +2,14 @@
 This project is written to implement translation of RPQs to Datalog rules using VLog open source Datalog engine using Java language.
 
 # Steps to run Vlog program:
-1)Download the Vlog source from the github https://github.com/knowsys/rulewerk/tree/master/rulewerk-examples 
-2)Download Eclipse from https://www.eclipse.org/downloads/
-3)Download Java from https://java.com/en/download/
-4)Import the Vlog project into Eclipse IDE and copy the files in Src folder.
-5)Download the below files of YAGO dataset from https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/downloads
-a)yagoLiteralFacts.tsv
-b)yagoFacts.tsv
-c)yagoDateFacts.tsv
+1) Download the Vlog source from the github https://github.com/knowsys/rulewerk/tree/master/rulewerk-examples \n
+2) Download Eclipse from https://www.eclipse.org/downloads/
+3) Download Java from https://java.com/en/download/
+4) Import the Vlog project into Eclipse IDE and copy the files in Src folder.
+5) Download the below files of YAGO dataset from https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/downloads
+a) yagoLiteralFacts.tsv
+b) yagoFacts.tsv
+c) yagoDateFacts.tsv
 6) From the Src folder, run SampleFileReader.java to get csv files.
 7) Then run the ParsingClass.java with the RPQ_script.txt to get the datalog translation results.
 
