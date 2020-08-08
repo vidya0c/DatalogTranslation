@@ -2,7 +2,7 @@
 This project is written to implement translation of RPQs to Datalog rules using VLog open source Datalog engine using Java language.
 
 # Steps to run Vlog program:
-1) Download the Vlog source from the github https://github.com/knowsys/rulewerk/tree/master/rulewerk-examples \n
+1) Download the Vlog source from the github https://github.com/knowsys/rulewerk/tree/master/rulewerk-examples 
 2) Download Eclipse from https://www.eclipse.org/downloads/
 3) Download Java from https://java.com/en/download/
 4) Import the Vlog project into Eclipse IDE and copy the files in Src folder.
