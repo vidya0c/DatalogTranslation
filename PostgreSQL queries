@@ -1,0 +1,162 @@
+PostgreSQL queries:
+
+Q1) SELECT
+	ismarriedto.id
+	person1,
+	place
+FROM ismarriedto
+INNER JOIN livesin ON ismarriedto.person2 = livesin.person
+UNION
+SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Asia'; 
+
+Q2) SELECT
+	hasChild.id
+	person,
+	child
+FROM hasChild
+INNER JOIN livesin ON hasChild.child = livesin.person
+UNION
+SELECT
+	islocated.id
+	person1,
+	place
+FROM influences
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Venice'; 
+
+Q3) SELECT
+	influences.id
+	person1,
+	place
+FROM influences
+INNER JOIN livesin ON influences.person2 = livesin.person
+UNION
+SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Japan';
+
+Q4) SELECT
+	livesin.id
+	person,
+	place
+FROM livesin
+UNION
+SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Florida';
+
+Q5) SELECT
+	hasSuccessor.id
+	person1,
+	place
+FROM hasSuccessor
+INNER JOIN livesin ON hasSuccessor.person2 = livesin.person
+UNION
+SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Japan';
+
+
+Q6) SELECT
+	hasNeighbor.id
+	person1,
+	place
+FROM hasNeighbor
+INNER JOIN livesin ON hasNeighbor.person2 = livesin.person
+UNION
+SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='California';
+
+Q7) SELECT
+	hasAcademicAdvisor.id
+	person1,
+	place
+FROM hasAcademicAdvisor
+INNER JOIN livesin ON hasAcademicAdvisor.person2 = livesin.person
+UNION
+SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Asia';
+
+Q8)SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='USA';
+
+Q9) Select actor from actedin
+where movie = 'Royal_Treasure';
+
+Q10)SELECT
+	islocated.id
+	place1,
+	dest
+FROM islocated
+INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Japan'; 
+
+Q11)SELECT
+	ismarriedto.id
+	person1,
+	place
+FROM ismarriedto
+UNION
+SELECT
+	owns.id
+	group,
+	place2
+FROM owns
+INNER JOIN islocated ON owns.company = locatedin.place1 AND locatedin.place2='USA'; 
+
+Q12)SELECT
+	wasbornin.id
+	person1,
+	place
+FROM wasbornin
+INNER JOIN locatedin ON wasbornin.person2 = livesin.person AND livesin.place='Venice';
+
+Q13)SELECT
+	hasAcademicadvisor.id
+	person1,
+	place
+FROM hasAcademicadvisor
+INNER JOIN livesIn ON hasAcademicadvisor.person2 = livesin.person AND livesin.place='Netherlands';
+
+Q14) SELECT
+	ismarriedto.id
+	person1,
+	place
+FROM ismarriedto
+INNER JOIN islocated ON ismarriedto.person2 = locatedin.person AND locatedin.place = 'USA';
+
+Q15) SELECT
+	islocated.id,
+	place1
+FROM islocated
+UNION
+SELECT
+	isconnectedto.id
+	place1,
+	dest
+FROM isconnectedto
+INNER JOIN dealswith ON isconnectedto.place2 = dealsWith.src AND dealsWith.dest='Japan'; 
