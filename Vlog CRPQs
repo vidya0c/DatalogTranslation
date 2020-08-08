@@ -1,0 +1,8 @@
+?a (wasBornIn/IsLocatedIn+) ?b; ?b (isConnectedTo+) ?c 
+?a (IsLocatedIn + isConnectedTo)+ ?b; ?c (wasBornIn) ?a 
+a (wasBornIn/IsLocatedIn+) Japan; ?a (dealsWith) ?c 
+?a (isLocatedIn+) ?b; ?b (isConnectedTo+) Japan 
+?a (isMarriedTo+) ?b; ?b (owns/IsLocatedIn+) USA 
+?a (livesIn/IsLocatedIn+) ?b; ?b (IsLocatedIn+/dealsWith+) Sweden 
+?a (hasChild/livesIn) ?b; ?b (IsLocatedIn+/dealsWith+) Japan 
+?a (isLocatedIn+) ?b; ?b (isConnectedTo+/dealsWith+) Japan
