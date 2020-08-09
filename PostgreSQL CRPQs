@@ -1,0 +1,102 @@
+PostgreSQL CRPQs
+
+Q1) SELECT
+	wasBornIn.id
+	person,
+	place
+FROM wasBornIn
+INNER JOIN livesin ON wasBornIn.person2 = IsLocatedIn.person
+UNION
+SELECT
+	isConnectedTo.id
+	src,
+	dest
+FROM isConnectedTo;
+
+Q2) SELECT
+	IsLocatedIn.id,
+	place
+FROM IsLocatedIn
+INNER JOIN isConnectedTo ON IsLocatedIn.place1 = isConnectedTo.place1
+UNION
+SELECT
+	wasBornIn.id
+	person,
+	place
+FROM wasBornIn;
+
+
+Q3) SELECT
+	wasBornIn.id
+	person,
+	place
+FROM wasBornIn
+INNER JOIN livesin ON wasBornIn.person2 = IsLocatedIn.person
+UNION
+SELECT
+	dealsWith.id
+	group,
+	company
+FROM dealsWith;
+
+Q4) SELECT
+	isLocatedIn.id
+	place1,
+	place2
+FROM isLocatedIn
+UNION
+SELECT
+	isConnectedTo.id
+	place1
+FROM isConnectedTo WHERE isConnectedTo.place2='Japan';
+
+
+Q5) SELECT
+	isMarriedTo.id
+	person1,
+FROM isMarriedTo
+UNION
+SELECT
+	owns.id
+	place1
+FROM owns
+INNER JOIN IsLocatedIn ON owns.place = IsLocatedIn.place1 AND IsLocatedIn.place2='USA';
+
+Q6) SELECT
+	livesIn.id
+	person,
+	place
+FROM livesIn
+INNER JOIN IsLocatedIn ON livesIn.place = IsLocatedIn.place
+UNION
+SELECT
+	IsLocatedIn.id
+	place1
+FROM IsLocatedIn
+INNER JOIN dealsWith ON IsLocatedIn.place2 = dealsWith.place1 AND dealsWith.place2='Sweden';
+
+
+Q7) SELECT
+	hasChild.id
+	person1
+FROM hasChild
+INNER JOIN livesIn ON hasChild.person2 = livesIn.person
+UNION
+SELECT
+	IsLocatedIn.id
+	place1
+FROM IsLocatedIn
+INNER JOIN dealsWith ON IsLocatedIn.place2 = dealsWith.place1 AND dealsWith.place2='Japan';
+
+
+Q8) SELECT
+	isLocatedIn.id
+	place1,
+	place2
+FROM isLocatedIn
+UNION
+SELECT
+	isConnectedTo.id
+	place1
+FROM isConnectedTo
+INNER JOIN dealsWith ON isConnectedTo.place2 = dealsWith.place1 AND dealsWith.place2='Japan';
