@@ -24,8 +24,8 @@ UNION
 SELECT
 	islocated.id
 	person1,
-	place
-FROM influences
+	place1
+FROM islocated
 INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Venice'; 
 
 Q3) SELECT
@@ -56,11 +56,11 @@ FROM islocated
 INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Florida';
 
 Q5) SELECT
-	hasSuccessor.id
-	person1,
-	place
-FROM hasSuccessor
-INNER JOIN livesin ON hasSuccessor.person2 = livesin.person
+	hasNeighbor.id
+	place1,
+	place2
+FROM hasNeighbor
+INNER JOIN livesin ON hasNeighbor.place2 = livesin.place
 UNION
 SELECT
 	islocated.id
@@ -71,11 +71,11 @@ INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Jap
 
 
 Q6) SELECT
-	hasNeighbor.id
-	person1,
+	hasChild.id
+	person,
 	place
-FROM hasNeighbor
-INNER JOIN livesin ON hasNeighbor.person2 = livesin.person
+FROM hasChild
+INNER JOIN livesin ON hasChild.child = livesin.person
 UNION
 SELECT
 	islocated.id
@@ -118,22 +118,23 @@ INNER JOIN dealswith ON islocated.place2 = dealsWith.src AND dealsWith.dest='Jap
 Q11)SELECT
 	ismarriedto.id
 	person1,
-	place
+	person2
 FROM ismarriedto
 UNION
 SELECT
-	owns.id
-	group,
+	livesin.id
+	place,
 	place2
-FROM owns
-INNER JOIN islocated ON owns.company = locatedin.place1 AND locatedin.place2='USA'; 
+FROM livesin
+INNER JOIN islocated ON livesin.place = islocated.place1 AND islocated.place2='USA'; 
 
 Q12)SELECT
 	wasbornin.id
-	person1,
-	place
+	person,
+	wasbornin.place
 FROM wasbornin
-INNER JOIN locatedin ON wasbornin.person2 = livesin.person AND livesin.place='Venice';
+INNER JOIN livesin ON wasbornin.person = livesin.person AND livesin.place='Venice';
+
 
 Q13)SELECT
 	hasAcademicadvisor.id
@@ -147,7 +148,7 @@ Q14) SELECT
 	person1,
 	place
 FROM ismarriedto
-INNER JOIN islocated ON ismarriedto.person2 = locatedin.person AND locatedin.place = 'USA';
+INNER JOIN islocated ON ismarriedto.person2 = locatedin.place OR locatedin.place = 'USA';
 
 Q15) SELECT
 	islocated.id,
@@ -156,7 +157,7 @@ FROM islocated
 UNION
 SELECT
 	isconnectedto.id
-	place1,
-	dest
+	airport1,
+	airport2
 FROM isconnectedto
-INNER JOIN dealswith ON isconnectedto.place2 = dealsWith.src AND dealsWith.dest='Japan'; 
+INNER JOIN dealswith ON isconnectedto.airport2 = dealsWith.src AND dealsWith.dest='Japan'; 
