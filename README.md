@@ -11,7 +11,7 @@ This project is written to implement translation of RPQs to Datalog rules using 
 
 # Steps to evaluate on POSTgreSQL:
 1) Download POSTgreSQL from https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
-2) Set up through the installer and localhost browser http://127.0.0.1:60626/browser/ to see the database.
+2) Set up through the installer and launch the pgAdmin to open the browser.
 3) Create a new database and under Tools option, click query tool 
 4) Run the POSTgreSQl queries from the folder "PostgreSQL statements"
 5) Once database is ready, run the "PostgreSQL RPQs" one by one in the Query tool.
